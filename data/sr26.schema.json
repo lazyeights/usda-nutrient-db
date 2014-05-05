@@ -1,0 +1,98 @@
+{
+  "food_des": [
+    "nDbNumber",
+    "foodGroupCode",
+    "longDescription",
+    "shortDescription",
+    "commonName",
+    "manufacturerName",
+    "survey",
+    "refuseDescription",
+    "refusePercentage",
+    "scientificName",
+    "nitrogenFactor",
+    "proteinFactor",
+    "fatFactor",
+    "carbFactor"
+  ],
+  "fd_group": [
+    "foodGroupCode",
+    "description"
+  ],
+  "langual": [
+    "nDbNumber",
+    "factorCode"
+  ],
+  "langdesc": [
+    "factorCode",
+    "description"
+  ],
+  "nut_data": [
+    "nDbNumber",
+    "number",
+    "value",
+    "dataPoints",
+    "standardError",
+    "sourceCode",
+    "dataDerivationCode",
+    "parentNdb",
+    "addedNutritionMark",
+    "numberOfStudies",
+    "min",
+    "max",
+    "degOfFreedom",
+    "lowerErrorBound",
+    "upperErrorBound",
+    "statisticalComments",
+    "modifiedDate",
+    "confidenceCode"
+  ],
+  "nutr_def": [
+    "nutrientNumber",
+    "units",
+    "tagName",
+    "description",
+    "decimalPlaces",
+    "sortOrder"
+  ],
+  "src_cd": [
+    "sourceCode",
+    "description"
+  ],
+  "deriv_cd": [
+    "derivationCode",
+    "description"
+  ],
+  "weight": [
+    "nDbNumber",
+    "sequence",
+    "amount",
+    "description",
+    "gramWeight",
+    "dataPoints",
+    "stdDev"
+  ],
+  "footnote": [
+    "nDbNumber",
+    "number",
+    "type",
+    "nutrientNumber",
+    "text"
+  ],
+  "datsrcln": [
+    "nDbNumber",
+    "nutrientNumber",
+    "dataSourceId"
+  ],
+  "data_src": [
+    "dataSourceId",
+    "authors",
+    "title",
+    "year",
+    "journal",
+    "volumeOrCity",
+    "issueOrState",
+    "startPage",
+    "endPage"
+  ]
+}

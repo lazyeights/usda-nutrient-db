@@ -1,0 +1,17 @@
+{
+  "name": "usda-nutrient-db",
+  "version": "0.0.1",
+  "description": "Utility to import USDA Nutrient Database into MongoDB",
+  "main": "index.js",
+  "dependencies": {
+    "async": "~0.8.0",
+    "JSONStream": "~0.7.3",
+    "mongodb": "~1.4.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David B. Conrad",
+  "license": "MIT"
+}

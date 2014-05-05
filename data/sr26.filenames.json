@@ -1,0 +1,14 @@
+{
+  "food_des": "FOOD_DES.txt",
+  "fd_group": "FD_GROUP.txt",
+  "langual": "LANGUAL.txt",
+  "langdesc": "LANGDESC.txt",
+  "nut_data": "NUT_DATA.txt",
+  "nutr_def": "NUTR_DEF.txt",
+  "src_cd": "SRC_CD.txt",
+  "deriv_cd": "DERIV_CD.txt",
+  "weight": "WEIGHT.txt",
+  "footnote": "FOOTNOTE.txt",
+  "datsrcln": "DATSRCLN.txt",
+  "data_src": "DATA_SRC.txt"
+}
