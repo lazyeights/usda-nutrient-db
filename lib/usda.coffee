@@ -4,8 +4,7 @@ Stream = require 'stream'
 mongodb = require 'mongodb'
 async = require 'async'
 
-schema = require './data/sr26.schema.json'
-filenames = require './data/sr26.filenames.json'
+{schema, filenames} = require '../data/sr26'
 
 class ByLineStream extends Stream.Transform
 
@@ -73,7 +72,6 @@ class MongoDbImportStream extends Stream.Writable
 
   _write: (chunk, encoding, done) ->
     @collection.insert chunk, (err, result) ->
-      console.log 'inserted ', result
       done()
 
 datafile = 'weights'
@@ -82,7 +80,7 @@ processDatafile = (datafile, collection, cb) ->
 
   filename = filenames[datafile]
 
-  fs.createReadStream './data/sr26/'+filename
+  fs.createReadStream './data/sr26/datafiles/'+filename
     .pipe new ByLineStream
     .pipe new UsdaToJSONStream datafile
     # .pipe new JSONStringifyStream
@@ -91,12 +89,32 @@ processDatafile = (datafile, collection, cb) ->
     .on 'error', -> cb new Error
     .on 'finish', cb
 
-datafile = 'weight'
+importDatafile = (datafile, cb) ->
 
-mongodb.connect 'mongodb://localhost:27017/usda', (err, db) ->
+  mongodb.connect 'mongodb://localhost:27017/usda', (err, db) ->
 
-  async.waterfall [
-    (cb) -> db.createCollection datafile, cb
-    async.apply processDatafile, datafile
-    (cb) -> db.close()
-  ]
+    if err then throw new Error 'Cannot connect to MongoDB @ mongodb://localhost:27017/usda'
+
+    async.waterfall [
+      (cb) -> db.createCollection datafile, cb
+      async.apply processDatafile, datafile
+      (cb) -> db.close cb
+    ], (err, results) -> 
+      console.log "Imported collection #{datafile}" unless err
+      cb(err)
+
+module.exports = 
+  
+  clearDatabase: (cb) ->
+    mongodb.connect 'mongodb://localhost:27017/usda', (err, db) ->
+      if err then throw new Error 'Cannot connect to MongoDB @ mongodb://localhost:27017/usda'
+      db.dropDatabase ->
+        console.log 'Dropped existing MongoDB database \'usda\''
+        db.close cb
+
+  import: importDatafile
+
+  datafiles: do -> (filename for filename of filenames)
+
+  filenames: filenames
+
